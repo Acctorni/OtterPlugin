@@ -3,7 +3,8 @@ package acctorni.otterplugin.command;
 import java.util.ArrayList;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import acctorni.otterplugin.OtterPlugin;
 
 
 public class OtterCommandManager {
@@ -18,10 +19,9 @@ public class OtterCommandManager {
 		commands.clear();
 	}
 	
-	public static boolean checkCommand(String c, CommandSender sender, String[] arguments, JavaPlugin pl) {
+	public static boolean checkCommand(String c, CommandSender sender, String[] arguments, OtterPlugin pl) {
 		boolean response = false;
 		for (Command com : commands) {
-//			sender.sendMessage("Checking command, " + com.getName() + " against " + c);
 			if (com.getName().equalsIgnoreCase(c)) {
 				response = com.onCommandCall(sender, arguments, pl);
 			}

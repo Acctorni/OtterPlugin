@@ -2,7 +2,6 @@ package acctorni.otterplugin.command;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import acctorni.otterplugin.OtterPlugin;
 
@@ -14,7 +13,7 @@ public class ReloadCommand extends Command {
 	}
 
 	@Override
-	boolean onCommandCall(CommandSender sender, String[] arguments, JavaPlugin pl) {
+	boolean onCommandCall(CommandSender sender, String[] arguments, OtterPlugin pl) {
 		if (sender.isOp()) {
 			pl.reloadConfig();
 

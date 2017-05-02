@@ -1,7 +1,6 @@
 package acctorni.otterplugin.command;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
 
 import acctorni.otterplugin.OtterPlugin;
 
@@ -13,7 +12,7 @@ public class DiscordCommand extends Command {
 	}
 
 	@Override
-	public boolean onCommandCall(CommandSender sender, String[] arguments, JavaPlugin pl) {
+	public boolean onCommandCall(CommandSender sender, String[] arguments, OtterPlugin pl) {
 		String m = "[" + OtterPlugin.prefix + "] " + OtterPlugin.discmessage + ": §r" + OtterPlugin.disclink;
 		sender.sendMessage(m);
 

@@ -1,7 +1,8 @@
 package acctorni.otterplugin.command;
 
 import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+
+import acctorni.otterplugin.OtterPlugin;
 
 
 public abstract class Command {
@@ -12,7 +13,7 @@ public abstract class Command {
 		this.name = name;
 	}
 	
-	abstract boolean onCommandCall(CommandSender sender, String[] arguments, JavaPlugin pl);
+	abstract boolean onCommandCall(CommandSender sender, String[] arguments, OtterPlugin pl);
 
 	public String getName() {
 		return this.name;

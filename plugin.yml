@@ -19,10 +19,15 @@ commands:
         usage: /<command>
         permission: otterplugin.gms
         permission-message: You don't have permission to use this command.
-        permission-message: You don't have permission to use this command.
     dynlink:
         description: Returns the link to our Dynmap.
         usage: /<command>
+    v:
+        description: Vanishes the player from others
+        usage: /<command>
+        permission: otterplugin.v
+        permission-message: You don't have permission to use this command.
+        
 permissions:
     otterplugin.*:
         description: Gives access to all OtterPlugin commands
@@ -35,4 +40,7 @@ permissions:
         default: op
     otterplugin.gms:
         description: Allows you to enter survival mode
+        default: op
+    otterplugin.v:
+        description: Allows you to vanish
         default: op
