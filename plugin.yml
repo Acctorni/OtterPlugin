@@ -1,0 +1,38 @@
+name: OtterPlugin
+main: acctorni.otterplugin.OtterPlugin
+version: 1.0
+author: Acctorni
+commands:
+    discord:
+        description: Returns the link to our Discord server.
+        usage: /<command>
+    orl:
+        description: Reloads the OtterCraft plugin.
+        usage: /<command>
+    ogmsp:
+        description: Places the player in spectator mode.
+        usage: /<command>
+        permission: otterplugin.gmsp
+        permission-message: You don't have permission to use this command.
+    ogms:
+        description: Places the player in survival mode.
+        usage: /<command>
+        permission: otterplugin.gms
+        permission-message: You don't have permission to use this command.
+        permission-message: You don't have permission to use this command.
+    dynlink:
+        description: Returns the link to our Dynmap.
+        usage: /<command>
+permissions:
+    otterplugin.*:
+        description: Gives access to all OtterPlugin commands
+        children:
+            otterplugin.gmsp: true
+            otterplugin.gms: true
+            otterplugin.v: true
+    otterplugin.gmsp:
+        description: Allows you to enter spectator mode
+        default: op
+    otterplugin.gms:
+        description: Allows you to enter survival mode
+        default: op
