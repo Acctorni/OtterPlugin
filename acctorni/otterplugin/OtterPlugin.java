@@ -9,6 +9,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,7 +24,7 @@ import acctorni.otterplugin.command.OtterCommandManager;
 import acctorni.otterplugin.command.ReloadCommand;
 import acctorni.otterplugin.command.VanishCommand;
 
-public class OtterPlugin extends JavaPlugin {
+public class OtterPlugin extends JavaPlugin implements Listener {
 
 	public static String disclink, dynlink = "";
 	public static String discmessage, dynmessage = "";
@@ -33,6 +36,7 @@ public class OtterPlugin extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		getLogger().log(Level.INFO, "[OtterPlugin] Enabling OtterPlugin");
+		getServer().getPluginManager().registerEvents(this, this);
 		OtterCommandManager.cleanupCommands();
 		v.clearPlayerList();
 		
@@ -73,6 +77,19 @@ public class OtterPlugin extends JavaPlugin {
 		boolean response = OtterCommandManager.checkCommand(command.getName(), sender, args, this);
 		return response;
 
+	}
+	
+	@EventHandler
+	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent e) {
+		String message = e.getMessage();
+		String user = e.getPlayer().getName();
+		Player pUser = e.getPlayer();
+		
+		// Anti-SocialSpy-Bypass
+		if (message.substring(0, 14).equalsIgnoreCase("/minecraft:msg")) {
+			e.setCancelled(true);
+			pUser.sendMessage("Unknown command. Type \"/help\" for help.");
+		}
 	}
 	
 	@EventHandler
