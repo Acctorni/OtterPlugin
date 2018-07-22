@@ -4,3 +4,6 @@ discord_message: Our Discord server is
 dynmap_link: insertiumddynmapiumlinkumhereum
 dynmap_message: Our Dynmap is 
 prefix: OtterCraft
+hiding_player: true
+granted_permissions:
+  - worldedit.*
